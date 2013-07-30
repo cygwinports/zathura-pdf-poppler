@@ -1,0 +1,18 @@
+--- origsrc/zathura-pdf-poppler-0.2.3/config.mk	2013-05-12 16:21:06.000000000 -0500
++++ src/zathura-pdf-poppler-0.2.3/config.mk	2013-07-30 13:26:13.040752100 -0500
+@@ -26,13 +26,14 @@ GIRARA_INC ?= $(shell pkg-config --cflag
+ GIRARA_LIB ?= $(shell pkg-config --libs girara-gtk${ZATHURA_GTK_VERSION})
+ 
+ ZATHURA_INC ?= $(shell pkg-config --cflags zathura)
++ZATHURA_LIB ?= $(shell pkg-config --libs zathura)
+ PLUGINDIR ?= $(shell pkg-config --variable=plugindir zathura)
+ ifeq (,${PLUGINDIR})
+ PLUGINDIR = ${LIBDIR}/zathura
+ endif
+ 
+ INCS = ${CAIRO_INC} ${PDF_INC} ${ZATHURA_INC} ${GIRARA_INC}
+-LIBS = ${GIRARA_LIB} ${CAIRO_LIB} ${PDF_LIB}
++LIBS = ${GIRARA_LIB} ${CAIRO_LIB} ${PDF_LIB} ${ZATHURA_LIB}
+ 
+ # flags
+ CFLAGS += -std=c99 -fPIC -pedantic -Wall -Wno-format-zero-length $(INCS)
